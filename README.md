@@ -1,7 +1,9 @@
 ## Description
 
 Have you ever had a craving for something, but had no idea where to find it?\
+\
 BellyFull is an AI meal recommendation chatbot that searches through restaurant menus around Nassau to find the exact food you're craving at a reasonable price.\
+\
 Check out the demo below and try it for yourself.
 
 ### Demo
