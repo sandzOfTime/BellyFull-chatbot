@@ -3,8 +3,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import MessagingResponse from 'twilio/lib/twiml/MessagingResponse.js';
-import { talk } from './chatbot.js';
-import { generateChatSession } from "./prompt.js";
+import { talk } from '../chatbot.js';
+import { generateChatSession } from "../prompt.js";
 
 
 const app = express();
