@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 
 import MessagingResponse from 'twilio/lib/twiml/MessagingResponse.js';
 import { talk } from './chatbot.js';
+import { generateChatSession } from "./prompt.js";
 
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const PORT = process.env.PORT;
 
+const chatSession = await generateChatSession();
 
 app.listen(PORT, () => {
     console.log("Server Listening on PORT:", PORT);
@@ -21,7 +23,7 @@ app.post('/bellyfull-chat', async (req, res) => {
     const userMessage = req.body.Body;
 
     try {
-        const chatbotResponse = await talk(userMessage);
+        const chatbotResponse = await talk(chatSession,userMessage);
         const twiml = new MessagingResponse();
         //Send back chatbot response
         twiml.message(chatbotResponse);
