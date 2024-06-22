@@ -34,3 +34,7 @@ app.post('/bellyfull-chat', async (req, res) => {
     }
 });
 
+app.get('/test', (req, res) => {
+    res.json({message: "Server is up and running"});
+});
+
