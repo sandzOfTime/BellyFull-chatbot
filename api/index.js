@@ -31,7 +31,7 @@ app.post('/bellyfull-chat', async (req, res) => {
     } catch (error) {
         console.log("We have an error");
         console.log(error);
-        return res.type('text/xml').send("Sorry, I am having a bit of trouble at the moment. Can we please have this conversation later?");
+        res.type('text/xml').send("Sorry, I am having a bit of trouble at the moment. Can we please have this conversation later?");
     }
 });
 
