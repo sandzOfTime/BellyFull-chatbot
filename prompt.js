@@ -8,10 +8,6 @@ const safetySettings = [
     {
       category: HarmCategory.HARM_CATEGORY_HARASSMENT,
       threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-    },
-    {
-        category: HarmCategory.HARM_CATEGORY_UNSPECIFIED,
-        threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
     }
   ];
 
