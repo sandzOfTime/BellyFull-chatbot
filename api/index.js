@@ -21,17 +21,18 @@ app.listen(PORT, () => {
 app.post('/bellyfull-chat', async (req, res) => {
     //Grab user message
     const userMessage = req.body.Body;
+    const twiml = new MessagingResponse();
 
     try {
         const chatbotResponse = await talk(chatSession,userMessage);
-        const twiml = new MessagingResponse();
         //Send back chatbot response
         twiml.message(chatbotResponse);
         res.type('text/xml').send(twiml.toString());
     } catch (error) {
         console.log("We have an error");
         console.log(error);
-        res.type('text/xml').send("Sorry, I am having a bit of trouble at the moment. Can we please have this conversation later?");
+        twiml.message("Sorry, I am having a bit of trouble at the moment. Can we please have this conversation later?");
+        res.type('text/xml').send(twiml.toString());
     }
 });
 
