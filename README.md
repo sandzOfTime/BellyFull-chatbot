@@ -20,3 +20,5 @@ You can either whatsapp the number `+14155238886` with the message `join-somethi
 
 Once you're connected to the sandbox, start typing to start the conversation!
 
+When you're done, type "stop" to disconnect from the sandbox.
+
