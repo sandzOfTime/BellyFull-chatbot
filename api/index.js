@@ -20,8 +20,10 @@ app.listen(PORT, () => {
 
 app.post('/bellyfull-chat', async (req, res) => {
     //Grab user message
+    console.log(req.headers);
     const userMessage = req.body.Body;
     const twiml = new MessagingResponse();
+    
 
     try {
         const chatbotResponse = await talk(chatSession,userMessage);
