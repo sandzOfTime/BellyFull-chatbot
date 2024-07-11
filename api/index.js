@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import MessagingResponse from 'twilio/lib/twiml/MessagingResponse.js';
 import { talk } from '../chatbot.js';
 import { generateChatSession } from "../prompt.js";
+import { getChatHistory, saveChatHistory } from "../supabase.js";
 
 
 const app = express();
