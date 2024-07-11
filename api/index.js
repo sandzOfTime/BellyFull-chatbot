@@ -20,7 +20,7 @@ app.listen(PORT, () => {
 
 app.post('/bellyfull-chat', async (req, res) => {
     //Grab user message
-    console.log(req.headers);
+    console.log(req.body);
     const userMessage = req.body.Body;
     const twiml = new MessagingResponse();
     
