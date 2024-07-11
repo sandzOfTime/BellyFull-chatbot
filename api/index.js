@@ -12,21 +12,28 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const PORT = process.env.PORT;
 
-const chatSession = await generateChatSession();
 
 app.listen(PORT, () => {
     console.log("Server Listening on PORT:", PORT);
 });
 
 app.post('/bellyfull-chat', async (req, res) => {
+
+    const userNumber = req.body.WaId;
+
     //Grab user message
-    console.log(req.body);
     const userMessage = req.body.Body;
     const twiml = new MessagingResponse();
     
 
     try {
+        const chatHistory = await getChatHistory(userNumber);
+        
+        const chatSession = chatHistory.length > 0 ? chatHistory[0].chatSession : await generateChatSession();
+
+        //Generate and save chatbot response
         const chatbotResponse = await talk(chatSession,userMessage);
+        await saveChatHistory(userNumber, chatSession);
         //Send back chatbot response
         twiml.message(chatbotResponse);
         res.type('text/xml').send(twiml.toString());
