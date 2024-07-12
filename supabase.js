@@ -30,6 +30,7 @@ export const getChatHistory = async (phoneNumber) => {
 export const saveChatHistory = async (phoneNumber, chat) => {
 
     const chatHistory = await getChatHistory(phoneNumber);
+    console.log("Chat History", chat)
 
     if (chatHistory.length > 0) {
         const { data, error } = await supabase
