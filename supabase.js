@@ -37,6 +37,7 @@ export const saveChatHistory = async (phoneNumber, chat) => {
         .from('ChatHistory')
         .update({ chat })
         .eq('phoneNumber', phoneNumber)
+        .select();
 
         if (error) {
          console.log(error);
