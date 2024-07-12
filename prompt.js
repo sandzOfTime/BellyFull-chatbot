@@ -1,5 +1,4 @@
 import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
-import { getMeals} from "./supabase.js";
 
 const apiKey = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
@@ -26,15 +25,9 @@ const generationConfig = {
 
 export const generateChatSession = async (chat) => {
 
-    const meals = await getMeals();
 
     return model.startChat({
         generationConfig,
-        history: [
-          {
-            role: "user",
-            parts: chat,
-          },
-        ],
+        history: chat,
       });
 }

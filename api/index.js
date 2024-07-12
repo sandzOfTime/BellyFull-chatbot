@@ -52,8 +52,8 @@ app.post('/bellyfull-chat', async (req, res) => {
         const chatbotResponse = await talk(chatSession,userMessage);
         //Send back chatbot response
         twiml.message(chatbotResponse);
-        const updatedChatHistory = chat.add({role: "model", parts: [{text: chatbotResponse}]});
-        await saveChatHistory(userNumber, updatedChatHistory);
+        chat.add({role: "model", parts: [{text: chatbotResponse}]});
+        await saveChatHistory(userNumber, chat);
         res.type('text/xml').send(twiml.toString());
     } catch (error) {
         console.log("We have an error");
