@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import MessagingResponse from 'twilio/lib/twiml/MessagingResponse.js';
 import { talk } from '../chatbot.js';
 import { generateChatSession } from "../prompt.js";
-import { getChatHistory, saveChatHistory } from "../supabase.js";
+import { getChatHistory, saveChatHistory, getMeals } from "../supabase.js";
 
 
 const app = express();
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const PORT = process.env.PORT;
 
-
+const meals = await getMeals();
 
 const initialPrompt = [
     {
