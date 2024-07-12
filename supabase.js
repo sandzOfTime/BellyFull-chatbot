@@ -31,7 +31,7 @@ export const saveChatHistory = async (phoneNumber, chat) => {
 
     const chatHistory = await getChatHistory(phoneNumber);
 
-    if (chatHistory.length > 0) {
+    if (chatHistory) {
         const { data, error } = await supabase
         .from('ChatHistory')
         .update({ chat })
@@ -40,6 +40,7 @@ export const saveChatHistory = async (phoneNumber, chat) => {
         if (error) {
          console.log(error);
         }
+        console.log("Updating data", data);
         return data;
     }
 
@@ -50,5 +51,6 @@ export const saveChatHistory = async (phoneNumber, chat) => {
     if (error) {
      console.log(error);
     }
+    console.log("Inserting data", data);
     return data;
 }
