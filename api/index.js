@@ -33,6 +33,7 @@ app.listen(PORT, () => {
 });
 
 app.post('/bellyfull-chat', async (req, res) => {
+    console.log("Hit me");
 
     const userNumber = req.body.WaId;
 
