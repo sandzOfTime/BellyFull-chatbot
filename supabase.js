@@ -35,9 +35,9 @@ export const saveChatHistory = async (phoneNumber, chat) => {
     if (chatHistory.length > 0) {
         const { data, error } = await supabase
         .from('ChatHistory')
-        .update({ chat })
+        .update({ chat: chat })
         .eq('phoneNumber', phoneNumber)
-        .select();
+        .select()
 
         if (error) {
          console.log(error);
