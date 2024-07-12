@@ -46,7 +46,7 @@ export const saveChatHistory = async (phoneNumber, chat) => {
 
     const { data, error } = await supabase
     .from('ChatHistory')
-    .insert([{ phoneNumber, chat }])
+    .insert([{ phoneNumber, chat }]).select();
 
     if (error) {
      console.log(error);
