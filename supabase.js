@@ -18,7 +18,7 @@ export const getMeals = async () => {
 export const getChatHistory = async (phoneNumber) => {
     const { data: chatHistory, error } = await supabase
     .from('ChatHistory')
-    .select('chatSession')
+    .select('chat')
     .eq('phoneNumber', phoneNumber)
 
     if (error) {
@@ -27,14 +27,14 @@ export const getChatHistory = async (phoneNumber) => {
     return chatHistory;
 }
 
-export const saveChatHistory = async (phoneNumber, chatSession) => {
+export const saveChatHistory = async (phoneNumber, chat) => {
 
     const chatHistory = await getChatHistory(phoneNumber);
 
     if (chatHistory.length > 0) {
         const { data, error } = await supabase
         .from('ChatHistory')
-        .update({ chatSession })
+        .update({ chat })
         .eq('phoneNumber', phoneNumber)
 
         if (error) {
@@ -45,7 +45,7 @@ export const saveChatHistory = async (phoneNumber, chatSession) => {
 
     const { data, error } = await supabase
     .from('ChatHistory')
-    .insert([{ phoneNumber, chatSession }])
+    .insert([{ phoneNumber, chat }])
 
     if (error) {
      console.log(error);
