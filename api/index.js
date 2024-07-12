@@ -49,6 +49,7 @@ app.post('/bellyfull-chat', async (req, res) => {
         const chat = chatHistory.length > 0 ? chatHistory?.chat : initialPrompt;
         
         const chatSession = await generateChatSession(chat);
+        console.log(chat[chat.length - 1])
 
         //Generate chatbot response
         const chatbotResponse = await talk(chatSession,userMessage);
