@@ -43,6 +43,8 @@ app.post('/bellyfull-chat', async (req, res) => {
 
     try {
         const chatHistory = await getChatHistory(userNumber);
+        chatHistory.length > 0 ? console.log("Chat History Found") : console.log("No Chat History Found");
+        console.log("Chat History", chatHistory);
 
         const chat = chatHistory.length > 0 ? chatHistory?.chat : initialPrompt;
         
