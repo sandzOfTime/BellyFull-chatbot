@@ -43,9 +43,8 @@ app.post('/bellyfull-chat', async (req, res) => {
 
     try {
         const chatHistory = await getChatHistory(userNumber);
-        console.log("Chat History", chatHistory);
 
-        const chat = chatHistory.length > 0 ? chatHistory : initialPrompt;
+        const chat = chatHistory.length > 0 ? chatHistory?.chat : initialPrompt;
         
         const chatSession = await generateChatSession(chat);
 
