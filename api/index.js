@@ -33,7 +33,6 @@ app.listen(PORT, () => {
 });
 
 app.post('/bellyfull-chat', async (req, res) => {
-    console.log("Hit me");
 
     const userNumber = req.body.WaId;
 
@@ -44,6 +43,7 @@ app.post('/bellyfull-chat', async (req, res) => {
 
     try {
         const chatHistory = await getChatHistory(userNumber);
+        console.log(chatHistory);
 
         const chat = chatHistory.length > 0 ? chatHistory[0].chatSession : initialPrompt;
         
