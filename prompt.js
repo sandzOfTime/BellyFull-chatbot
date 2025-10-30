@@ -11,8 +11,8 @@ const safetySettings = [
   ];
 
 const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash",
-  safetySettings
+  model: "gemini-2.5-flash",
+  safetySettingss
 });
 
 const generationConfig = {
